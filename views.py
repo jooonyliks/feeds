@@ -16,9 +16,9 @@ def bbc(request):
         os.remove(default_path)
     else:
         print("FileNotPresentError")
-    wget.download(url,"C:\\Users\\dell\\Desktop\\rssfeeds\\feeds\\xmls\\bbc.xml")
+    wget.download(url,default_path)
     
-    location = "C:\\Users\\dell\\Desktop\\rssfeeds\\feeds\\xmls\\bbc.xml"
+    location = default_path
     data_source = open(location)
     dom1  = parse(data_source)
     r= dom1.documentElement
@@ -231,7 +231,7 @@ def espn(request):
     return render(request,'espn.html',context=context)
 
 def greatgoals(request):
-    url = "https://www.101greatgoals.com/feed/ "
+    url = "https://www.goal.com/feeds/en/news"
     default_path = "C:\\Users\\dell\\Desktop\\rssfeeds\\feeds\\xmls\\great-goals.xml"
     if os.path.exists(default_path):
         os.remove(default_path)
@@ -294,7 +294,7 @@ def skysports(request):
     return render(request,'sky-sports.html',context=context)
 
 def soccernews(request):
-    url = "https://www.espn.com/espn/rss/news"
+    url = "http://www.soccernews.com/feed"
     default_path = "C:\\Users\\dell\\Desktop\\rssfeeds\\feeds\\xmls\\soccernews.xml"
     if os.path.exists(default_path):
         os.remove(default_path)
@@ -323,4 +323,4 @@ def soccernews(request):
         "title" : d.items()
         # "link": b.items()
         }
-    return render(request,'sky-sports.html',context=context)
+    return render(request,'soccernews.html',context=context)
